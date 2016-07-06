@@ -1,0 +1,4 @@
+id, categoria, imagen, nombre, precio, description
+
+
+30 productos.
