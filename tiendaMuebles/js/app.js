@@ -1,46 +1,78 @@
-var app = angular.module('expensesApp', ['ngRoute']);
+var app = angular.module('furnitureShopApp',["ngRoute"]);
 
-//Configuramos nuestras rutas
-
-app.config(['$routeProvider',function($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'views/expenses.html',
-			controller: 'ExpensesViewController'
+			templateUrl: 'views/homeView.html',
+			controller: 'indexController'
 		})
 
-		.when('/expenses', {
-			templateUrl: 'views/expenses.html',
-			controller: 'ExpensesViewController'
+		.when('/furnitures', {
+			templateUrl: 'views/products.html',
+			controller: 'furnitures'
 		})
 
-		.when('/expenses/new', {
-			templateUrl: 'views/expensesForm.html',
-			controller: 'ExpenseViewController'
+		.when("/furnitures/category/:category", {
+			templateUrl: "views/categoryFurniture.html",
+			controller: "categoryFurniture"
+		})
+
+		.when("/contact",{
+			templateUrl: "views/furnitureForm.html",
+			controller: "furnitureForm"
 		})
 
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: "/"
 		})
 }]);
 
-//Empezamos con nuestros controladores. Controlador para todo el HTML
-app.controller('HomeViewController', ['$scope', function($scope) {
-	$scope.appTitle = 'Simple Expenses Tracker';
+//Controlador Pagina Principal
+app.controller('indexController',['$scope',function($scope) {
+
 }]);
 
-//Controlador solo para añadir nuevos gastos. Para las vistas del gasto
-app.controller('ExpensesViewController', ['$scope', function($scope) {
-	$scope.expenses = [
-		{description: 'Food', amount: 10.12345, date: '2016-10-01'},
-		{description: 'Tickets', amount: 12.4556, date: '2016-09-01'},
-		{description: 'Bills', amount: 15.11, date: '2016-08-01'},
-		{description: 'Phone', amount: 23.15, date: '2016-07-01'},
-		{description: 'House', amount: 10.23, date: '2016-06-01'},
-		{description: 'Fuel', amount: 10, date: '2016-05-01'}
-	]
+//Controlador para el catálogo de productos
+app.controller('furnitures',['$scope','$http', function($scope,$http) {
+    
+    $http.get("js/furnitures.json").success(function(data) {
+        $scope.furnitures = data;
+    });
+
 }]);
 
-app.controller('ExpenseViewController', ['$scope', function($scope) {
-	$scope.someText = 'The World is mine Yeah!!';
-}])
+//Controlador para tipo de muebles
+app.controller("categoryFurniture",["$scope", "$http", "$routeParams", function($scope, $http, $routeParams){
+	$scope.category = $routeParams.category;
+
+	$http.get("js/furnitures.json").success(function(data) {
+		$scope.furnitures = data;
+	});
+}]);
+
+//Controlador para el formulario
+app.controller("furnitureForm", ["$scope", function(){
+
+}]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*app.directive('parallax', [function () {
+	return {
+		templateUrl: 'views/parallax.html'
+	};
+}])*/

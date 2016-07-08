@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="furnitureShopApp">
 <head>
 	<title>Tienda de Muebles - Idea Interior</title>
 
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
-
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="screen,projection" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen,projection" />
+
+	<script src="js/jquery-2.1.4.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="navbar-fixed">
@@ -19,107 +20,64 @@
 		    	<img class="img-res" src="img/logo.png" title="Idea Interior" alt="Idea Interior" />
 		    </a>
 
+				<!--dropdown para menú estándar-->
+		    <ul id="dropdown1" class="dropdown-content">
+    			<li><a ng-click="myFilter={category:''}" href="#furnitures">TODOS</a></li>
+    			<li><a ng-click="myFilter={category: 'Mesas'}" href="#furnitures/category/Mesas">MESAS</a></li>
+    			<li><a ng-click="myFilter={category: 'Sillas'}" href="#furnitures/category/Sillas">SILLAS</a></li>
+    			<li><a ng-click="myFilter={category: 'Sofas'}" href="#furnitures/category/Sofas">SOFÁS</a></li>
+    		</ul>
+				
+				<!--dropdown para menú responsive-->
+		    <ul id="dropdown2" class="dropdown-content">
+    			<li><a ng-click="myFilter={category:''}" href="#furnitures">TODOS</a></li>
+    			<li><a ng-click="myFilter={category: 'Mesas'}" href="#furnitures/category/Mesas">MESAS</a></li>
+    			<li><a ng-click="myFilter={category: 'Sillas'}" href="#furnitures/category/Sillas">SILLAS</a></li>
+    			<li><a ng-click="myFilter={category: 'Sofas'}" href="#furnitures/category/Sofas">SOFÁS</a></li>
+    		</ul>
+
 		    <!--Menú estándar-->
 		    <ul class="right hide-on-med-and-down">
-		      <li><a href="#">INICIO</a></li>
-		      <li><a href="#">SOBRE NOSOTROS</a></li>
-		      <li><a href="#">CATÁLOGO</a></li>
-		      <li><a href="#">CONTACTO</a></li>
+		      <li>
+		      	<a href="#/">INICIO</a>
+		      </li>
+		      <li>
+		      	<a href="#">SOBRE NOSOTROS</a>
+		      </li>
+		      <li>
+		      	<a class="dropdown-button" href="#" data-activates="dropdown1">CATEGORÍAS
+		      		<i class="material-icons right">arrow_drop_down</i>
+		      	</a>
+		      </li>
+		      <li>
+		      	<a href="#contact">CONTACTO</a>
+		      </li>           
 		    </ul>
-				
-				<!--Menú para móviles-->
-		    <ul id="nav-mobile" class="side-nav">
-		      <li><a href="#">INICIO</a></li>
-		      <li><a href="#">SOBRE NOSOTROS</a></li>
-		      <li><a href="#">CATÁLOGO</a></li>
-		      <li><a href="#">CONTACTO</a></li>
-		    </ul>
-		    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">view_headline</i></a>
+
+				<!--Menú responsive-->
+		    <ul class="side-nav" id="mobile-demo">
+          <li><a href="/">INICIO</a></li>
+          <li><a href="#">SOBRE NOSOTROS</a></li>
+          <li><a class='dropdown-button' href="#" data-activates='dropdown2'>CATÁLOGO<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+          <li><a href="#contact">CONTACTO</a></li>
+        </ul>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 		  </div>
 		</nav>
 	</div>
 
-	<div class="slider">
-	  <ul class="slides">
-	    <li>
-	    	<img src="img/salones.jpg" title="Salones" alt="Salones" />
-	    	<div class="caption right-align">
-	        <h3>Right Aligned Caption</h3>
-	      </div>
-	    </li>
-	    <li>
-	      <img src="img/dormitorios.jpg" title="Dormitorios" alt="Dormitorios" />
-	    </li>
-	    <li>
-	      <img src="img/cocinas.jpg" title="Cocinas" alt="Cocinas" />
-	    </li>
-	    <li>
-	      <img src="img/banos.jpg" title="Baños" alt="Baños" />
-	    </li>
-	  </ul>
-	</div>
-
-	<div class="container">
-	  <div class="section">
-	    <!--   Icon Section   -->
-	    <div class="row">
-	      <div class="col s12 m4">
-	        <div class="icon-block">
-	        	<a href="#">
-	        		 <h2 class="icon-vec center brown-text"><img src="img/desk.svg" width="250" title="Mesas" alt="Mesas" /></h2>
-	        	</a>     
-	          <h5 class="items center">MESAS</h5>
-
-	          <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nemo. Nulla corporis fuga, sunt distinctio modi ipsum sit est! Magnam a accusantium perspiciatis exercitationem, molestiae necessitatibus suscipit architecto sunt veritatis!</p>
-	        </div>
-	      </div>
-
-	      <div class="col s12 m4">
-	        <div class="icon-block">
-	        	<a href="#">
-	        		<h2 class="center brown-text"><img src="img/chair.svg" width="183" title="Sillas" alt="Sillas" /></h2>
-	        	</a>   
-	          <h5 class="items center">SILLAS</h5>
-
-	          <p class="chair light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore neque unde ad ducimus beatae animi aut quisquam eius maxime, reiciendis, laboriosam! Ut dolor ipsum quaerat tempora ipsam, explicabo, veniam quisquam.</p>
-	        </div>
-	      </div>
-
-	      <div class="col s12 m4">
-	        <div class="icon-block">
-	        	<a href="#">
-	        		<h2 class="center brown-text"><img src="img/sofa.svg" width="178" title="Sofás" alt="Sofás" /></h2>
-	        	</a>
-	          <h5 class="items center">SOFÁS</h5>
-
-	          <p class="sofa light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi repellendus, aliquid dignissimos blanditiis neque! Perspiciatis enim consectetur quaerat magnam beatae, eum fugit accusantium quam rerum nostrum quis optio culpa.</p>
-	        </div>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-
-	<div class="parallax-container valign-wrapper">
-	  <div class="section no-pad-bot">
-	    <div class="container">
-	      <div class="row center">
-	        <h5 class="header col s12 light">Lorem ipsum Et aliqua eu Ut nisi incididunt.</h5>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="parallax"><img src="img/background.jpg" alt="Idea Interior"></div>
-	</div>
+	<!--Container-->
+	<div ng-view></div>
 
 	<footer class="page-footer teal">
 	  <div class="container">
 	    <div class="row">
-	      <div class="col l6 s12">
+	      <article class="col l6 s12">
 	        <h5 class="center white-text">idea INTERIOR</h5>
 	        <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, deleniti! Quam eaque hic eum aliquam, deserunt, ex, obcaecati nisi consectetur vero esse unde. Dolorem, rerum. Aperiam nobis sint aut soluta.</p>
 	        <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat magni porro odio, nesciunt, veritatis dicta fugiat nulla alias.</p>
-	      </div>
-	      <div class="col l6 s12">
+	      </article>
+	      <article class="col l6 s12">
 	        <h5 class="center white-text">Empresas colaboradoras</h5>
 	        <div class="col s12 m4">
 	        	<a href="http://www.mueblesmelibel.com/">
@@ -150,12 +108,11 @@
 	  </div>
 	  <div class="footer-copyright">
 	    <div class="container">
-	    Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Alejandro Martín</a>
+	    Made by <a class="made brown-text text-lighten-3" href="http://materializecss.com">Alejandro Martín</a>
 	    </div>
 	  </div>
 	</footer>
 	    
-	<script src="js/jquery-2.1.4.js" type="text/javascript"></script>
 	<script src="js/angular.min.js"></script>
 	<script src="js/angular-route.min.js"></script>
 	<script src="js/app.js"></script>
